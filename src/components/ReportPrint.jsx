@@ -18,8 +18,8 @@ import { Hidden } from "@mui/material";
 export default function ReportPrint() {
   const componentRef = useRef();
   const [data, setData] = useState([]);
-  const [value, setValue] = useState(dayjs("2022-12-02"));
-  const [toTime, settoTime] = useState(dayjs("2022-12-02"));
+  const [value, setValue] = useState(dayjs(Date().toJSON().slice(0, 10)));
+  const [toTime, settoTime] = useState(dayjs(Date().toJSON().slice(0, 10)));
   const [findbutton, setfindbutton] = useState(false);
   const [checked, setchecked] = useState(false);
   const [Datechecked, setDatechecked] = useState(true);
