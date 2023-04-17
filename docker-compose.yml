@@ -1,8 +1,8 @@
 version: "0.1"
 services:
   app:
-    container_name: iot_miniproject1
-    image: iot_miniproject_image1
+    container_name: iot_miniproject
+    image: iot_miniproject_image
     build:
       context: .
     ports:
