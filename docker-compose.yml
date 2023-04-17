@@ -1,0 +1,9 @@
+version: "0.1"
+services:
+  app:
+    container_name: iot_miniproject1
+    image: iot_miniproject_image1
+    build:
+      context: .
+    ports:
+      - 8080:3000

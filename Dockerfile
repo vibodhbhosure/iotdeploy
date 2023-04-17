@@ -1,8 +1,8 @@
-FROM nginx
-
-COPY container / 
-COPY build /usr/share/nginx/html
-
-ENV REACT_APP_API_KEY 'KeyA20222023'
-
-CMD /bin/bash -c "envsubst '\$REACT_APP_API_KEY' < /etc/nginx/nginx.template > /etc/nginx/nginx.conf &&  nginx -g 'daemon off;'"
+FROM node:latest
+WORKDIR /app
+# COPY package*.json ./
+# RUN npm install --legacy-peer-deps
+COPY /build ./
+# RUN npm run build
+RUN npm install -g serve
+CMD serve -s build
