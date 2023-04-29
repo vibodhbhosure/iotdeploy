@@ -23,9 +23,11 @@ export default function Landing() {
 
   return (
     <div className="jumbotron topDiv text-center">
-      <h1>
-        AIR <br /> QUALITY <br /> MONITORING <br /> SYSTEM
-      </h1>
+      <div className="bigName">
+        <h1>
+          AIR <br /> QUALITY <br /> MONITORING <br /> SYSTEM
+        </h1>
+      </div>
       <div className="row">
         <div className="container-fluid dateTime col">
           <LocalizationProvider dateAdapter={AdapterDayjs}>

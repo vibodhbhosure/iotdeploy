@@ -1,0 +1,5 @@
+nav a.nav-link {
+    font-weight: 700;
+    letter-spacing: 0.0375rem;
+    cursor: pointer;
+}

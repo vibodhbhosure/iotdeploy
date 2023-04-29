@@ -1,11 +1,15 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/iotlogo.png";
+import "./navbar.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function Navbar12(props) {
+const Header = (props) => {
+  let activeStyle = {
+    color: "#fff",
+  };
+
   const baseUrl = props.baseUrl;
 
   const [data, setData] = useState({
@@ -31,25 +35,79 @@ function Navbar12(props) {
 
   useEffect(() => getData(), []);
 
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <>
-      <Navbar style={{ backgroundColor: "#6198FF" }} variant="dark">
-        <Container>
-          <Navbar.Brand href="./">
-            <img src={logo} alt="IOT" style={{ marginRight: "1.25rem" }} />
+    <div className="header">
+      <Navbar
+        expanded={expanded}
+        expand="lg"
+        sticky="top"
+        style={{ backgroundColor: "#6198FF" }}
+      >
+        <Container className="navbar-custom-container">
+          <Navbar.Brand>
+            <img src={logo} alt="logo" id="logo" />
           </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="./Dashboard">Dashboard</Nav.Link>
-            <Nav.Link href="./Location">Location</Nav.Link>
-            <Nav.Link href="./ReportPrint">Generate Report</Nav.Link>
-          </Nav>
-          <Navbar.Text>
-            Location - Longitude: {data.lon} & Latitude: {data.lat}
-          </Navbar.Text>
+          <Navbar.Toggle
+            onClick={() => setExpanded(expanded ? false : "expanded")}
+          />
+          <Navbar.Collapse className="justify-content-end navbar-c">
+            <Nav className="ml-auto">
+              <NavLink
+                to="/"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="nav-link"
+                onClick={() => setExpanded(false)}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/Dashboard"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="nav-link"
+                onClick={() => setExpanded(false)}
+              >
+                Dashboard
+              </NavLink>
+              <NavLink
+                to="/Location"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="nav-link"
+                onClick={() => setExpanded(false)}
+              >
+                Location
+              </NavLink>
+              <NavLink
+                to="/ReportPrint"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="nav-link"
+                onClick={() => setExpanded(false)}
+              >
+                Generate Report
+              </NavLink>
+              <NavLink
+                to="/ReportPrin"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="nav-link"
+                onClick={() => setExpanded(false)}
+              >
+                Longitude: {data.lon}
+              </NavLink>
+              <NavLink
+                to="/ReportPrin"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="nav-link"
+                onClick={() => setExpanded(false)}
+              >
+                Latitude: {data.lat}
+              </NavLink>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
+    </div>
   );
-}
+};
 
-export default Navbar12;
+export default Header;
